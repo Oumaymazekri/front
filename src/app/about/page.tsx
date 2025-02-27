@@ -33,7 +33,6 @@ const AboutPage = () => {
             width="100%"
             height="400"
             style={{ border: 0 }}
-            allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>

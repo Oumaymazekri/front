@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useState } from "react";
 
 const Signup = () => {
     const [formData, setFormData] = useState({
-        FullName: "", // Updated to match the schema
+        FullName: "",
         Email: "",
         Password: "",
         ConfirmPassword: "",
@@ -14,12 +13,13 @@ const Signup = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const handleChange = (e) => {
+    // Define the event type explicitly
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
         setFormData({ ...formData, [id]: value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError("");
         setSuccess("");
@@ -37,9 +37,9 @@ const Signup = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    FullName: formData.FullName, // Updated field
-                    Email: formData.Email, // Updated field
-                    Password: formData.Password, // Updated field
+                    FullName: formData.FullName,
+                    Email: formData.Email,
+                    Password: formData.Password,
                 }),
             });
 

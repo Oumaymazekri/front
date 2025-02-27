@@ -10,30 +10,30 @@ const Navbar = () => {
     const toggleMenu = () => setMenuOpen(!menuOpen);
 
     return (
-        <div className="h-20 w-full relative bg-white shadow-sm">
+        <div className="h-20 w-full relative bg-slate-800 shadow-md">
             {/* Mobile view */}
             <div className="h-full flex items-center justify-between md:hidden px-4">
                 {/* Left content: Logo and Title */}
                 <Link href="/" className="flex items-center gap-2">
                     <ShoppingBag className="w-6 h-6 text-[#F35C7A]" />
-                    <span className="text-2xl tracking-wide">T&O</span>
+                    <span className="text-2xl tracking-wide text-white">T&O</span>
                 </Link>
 
                 {/* Right content: Menu icon for mobile */}
                 <div className="flex items-center gap-4">
                     <button onClick={toggleMenu} className="p-1">
-                        <MenuIcon className="w-6 h-6 text-gray-700 hover:text-gray-900" />
+                        <MenuIcon className="w-6 h-6 text-gray-200 hover:text-white" />
                     </button>
                 </div>
             </div>
 
             {/* Mobile menu dropdown */}
             {menuOpen && (
-                <div className="absolute top-20 left-0 right-0 bg-white w-full flex flex-col items-center gap-4 py-4 shadow-lg z-50 md:hidden">
-                    <Link href="/" className="hover:text-[#F35C7A] transition-colors">Homepage</Link>
-                    <Link href="/shop" className="hover:text-[#F35C7A] transition-colors">Shop</Link>
-                    <Link href="/about" className="hover:text-[#F35C7A] transition-colors">About</Link>
-                    <Link href="/contact" className="hover:text-[#F35C7A] transition-colors">Contact</Link>
+                <div className="absolute top-20 left-0 right-0 bg-slate-700 w-full flex flex-col items-center gap-4 py-4 shadow-lg z-50 md:hidden">
+                    <Link href="/" className="text-gray-200 hover:text-[#F35C7A] transition-colors">Homepage</Link>
+                    <Link href="/shop" className="text-gray-200 hover:text-[#F35C7A] transition-colors">Shop</Link>
+                    <Link href="/about" className="text-gray-200 hover:text-[#F35C7A] transition-colors">About</Link>
+                    <Link href="/contact" className="text-gray-200 hover:text-[#F35C7A] transition-colors">Contact</Link>
                 </div>
             )}
 
@@ -44,15 +44,15 @@ const Navbar = () => {
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3">
                         <ShoppingBag className="w-8 h-8 text-[#F35C7A]" />
-                        <span className="text-2xl tracking-wide">T&O</span>
+                        <span className="text-2xl tracking-wide text-white">T&O</span>
                     </Link>
 
                     {/* Navigation Links */}
                     <div className="hidden xl:flex gap-6">
-                        <Link href="/" className="hover:text-[#F35C7A] transition-colors">Homepage</Link>
-                        <Link href="/shop" className="hover:text-[#F35C7A] transition-colors">Shop</Link>
-                        <Link href="/about" className="hover:text-[#F35C7A] transition-colors">About</Link>
-                        <Link href="/contact" className="hover:text-[#F35C7A] transition-colors">Contact</Link>
+                        <Link href="/" className="text-gray-200 hover:text-[#F35C7A] transition-colors">Homepage</Link>
+                        <Link href="/shop" className="text-gray-200 hover:text-[#F35C7A] transition-colors">Shop</Link>
+                        <Link href="/about" className="text-gray-200 hover:text-[#F35C7A] transition-colors">About</Link>
+                        <Link href="/contact" className="text-gray-200 hover:text-[#F35C7A] transition-colors">Contact</Link>
                     </div>
                 </div>
 

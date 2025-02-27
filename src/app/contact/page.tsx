@@ -1,14 +1,23 @@
 "use client";
 import { useState } from "react";
 
+// Typage des données du formulaire
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 const ContactPage = () => {
-  const [formData, setFormData] = useState({
+  // Utilisation de useState avec le typage de FormData
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleChange = (e) => {
+  // Typage de l'événement dans handleChange
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -16,7 +25,7 @@ const ContactPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Logique pour soumettre le formulaire, par exemple une requête API.
     alert("Message envoyé !");
@@ -62,10 +71,11 @@ const ContactPage = () => {
             value={formData.message}
             onChange={handleChange}
             placeholder="Écrivez votre message"
-            rows="6"
+            rows={6}  // Remplacer "rows='6'" par "rows={6}"
             required
           ></textarea>
         </div>
+
 
         <button type="submit" className="submit-btn">
           Envoyer

@@ -1,4 +1,5 @@
-"use client";
+"use client"; // Marque le composant comme un composant côté client
+
 import React, { useState } from "react";
 import Link from "next/link";
 
@@ -11,12 +12,12 @@ const Login = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
         setFormData({ ...formData, [id]: value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError("");
         setSuccess("");

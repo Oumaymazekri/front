@@ -4,8 +4,16 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { FaMinus, FaPlus, FaTrashAlt, FaShoppingCart, FaArrowLeft, FaCreditCard, FaLock } from "react-icons/fa"
 
+interface Item {
+  id: number
+  images: string[]
+  nom: string
+  prix: number
+  quantite: number
+}
+
 const Panier = () => {
-  const [items, setItems] = useState([
+  const [items, setItems] = useState<Item[]>([
     {
       id: 1,
       images: ["/images/pii6.jpg"],
@@ -42,13 +50,15 @@ const Panier = () => {
     setIsCartEmpty(items.length === 0)
   }, [items])
 
-  const handleQuantiteChange = (id, nouvelleQuantite) => {
+  const handleQuantiteChange = (id: number, nouvelleQuantite: number) => {
     if (nouvelleQuantite < 1) return
-    const nouveauxItems = items.map((item) => (item.id === id ? { ...item, quantite: nouvelleQuantite } : item))
+    const nouveauxItems = items.map((item) =>
+      item.id === id ? { ...item, quantite: nouvelleQuantite } : item
+    )
     setItems(nouveauxItems)
   }
 
-  const handleSupprimer = (id) => {
+  const handleSupprimer = (id: number) => {
     const nouveauxItems = items.filter((item) => item.id !== id)
     setItems(nouveauxItems)
   }
@@ -66,7 +76,6 @@ const Panier = () => {
       <div className="panier">
         <h2 className="panier-title">
           <FaShoppingCart className="cart-icon" /> Votre Panier
-          
         </h2>
         <AnimatePresence>
           {isCartEmpty ? (
@@ -272,120 +281,80 @@ const Panier = () => {
           border-radius: 5px;
           cursor: pointer;
           transition: all 0.3s ease;
-          margin-top: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .supprimer-btn:hover {
-          background-color: #ff5252;
-        }
-
-        .supprimer-btn svg {
-          margin-right: 5px;
-        }
-
-        .panier-resume {
-          background-color: #f8f9fa;
-          padding: 30px;
-          border-top: 1px solid #e9ecef;
-        }
-
-        .resume-details p {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 10px;
-          font-size: 16px;
-          color: #4a5568;
-        }
-
-        .resume-details .total-price {
-          font-size: 24px;
-          font-weight: 700;
-          color: #2c3e50;
-          margin-top: 20px;
-          padding-top: 20px;
-          border-top: 2px solid #e9ecef;
-        }
-
-        .payer-btn {
-          width: 100%;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border: none;
-          padding: 15px;
-          border-radius: 10px;
-          font-size: 18px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 20px;
-        }
-
-        .payer-btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
-        }
-
-        .payer-btn svg {
-          margin-right: 10px;
-        }
-
-        .securite {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #718096;
-          font-size: 14px;
           margin-top: 15px;
         }
 
-        .securite svg {
-          margin-right: 5px;
+        .supprimer-btn:hover {
+          background-color: #ff4b4b;
+        }
+
+        .panier-resume {
+          padding: 30px;
+          background-color: #f8f9fa;
+          border-top: 1px solid #dee2e6;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .resume-details {
+          width: 100%;
+          margin-bottom: 30px;
+        }
+
+        .resume-details p {
+          font-size: 18px;
+          margin: 10px 0;
+        }
+
+        .total-price {
+          font-size: 20px;
+          font-weight: 700;
+          color: #2c3e50;
+        }
+
+        .payer-btn {
+          background-color: #3498db;
+          color: white;
+          padding: 15px 30px;
+          font-size: 18px;
+          border-radius: 5px;
+          cursor: pointer;
+          width: 100%;
+          transition: all 0.3s ease;
+        }
+
+        .payer-btn:hover {
+          background-color: #2980b9;
+        }
+
+        .securite {
+          font-size: 14px;
+          font-weight: 400;
+          color: #7f8c8d;
+          margin-top: 15px;
+          display: flex;
+          align-items: center;
         }
 
         .empty-cart {
           text-align: center;
-          padding: 40px;
-        }
-
-        .empty-cart p {
-          font-size: 20px;
-          color: #718096;
-          margin: 20px 0;
+          padding: 50px;
         }
 
         .continuer-btn {
-          background-color: #4a5568;
+          background-color: #2ecc71;
+          padding: 10px 20px;
+          font-size: 16px;
           color: white;
           border: none;
-          padding: 12px 25px;
-          border-radius: 10px;
-          font-size: 16px;
-          font-weight: 600;
+          border-radius: 5px;
           cursor: pointer;
           transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
 
         .continuer-btn:hover {
-          background-color: #2d3748;
-        }
-
-        .continuer-btn svg {
-          margin-right: 10px;
-        }
-
-        @media (max-width: 768px) {
-          .produits-grid {
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          }
+          background-color: #27ae60;
         }
       `}</style>
     </div>
@@ -393,4 +362,3 @@ const Panier = () => {
 }
 
 export default Panier
-

@@ -20,7 +20,7 @@ const NavIcons = () => {
             {/* Icône de profil */}
             <div className="relative">
                 <svg
-                    className="w-6 h-6 cursor-pointer text-gray-700 hover:text-gray-900"
+                    className="w-6 h-6 cursor-pointer text-white hover:text-gray-200"
                     onClick={handleProfile}
                     fill="none"
                     stroke="currentColor"
@@ -49,7 +49,7 @@ const NavIcons = () => {
             {/* Icône de notification */}
             <div className="cursor-pointer">
                 <svg
-                    className="w-6 h-6 text-gray-700 hover:text-gray-900"
+                    className="w-6 h-6 text-white hover:text-gray-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -67,7 +67,7 @@ const NavIcons = () => {
             {/* Icône du panier */}
             <div className="relative cursor-pointer" onClick={handleCartClick}>
                 <svg
-                    className="w-6 h-6 text-gray-700 hover:text-gray-900"
+                    className="w-6 h-6 text-white hover:text-gray-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
